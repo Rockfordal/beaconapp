@@ -1,0 +1,2 @@
+cd front
+http-server -p 1337
