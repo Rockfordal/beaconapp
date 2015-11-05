@@ -1,0 +1,52 @@
+<table id="index" class="table table-striped">
+    <thead>
+    <tr id="first" class="first">
+        <th class="name"><a href="?s=name">Thumb</a></th>
+        <th><a href="?s=off">Offense</a></th>
+        <th><a href="?s=id" title="Infantry defense">Id</a></th>
+        <th><a href="?s=cd" title="Cavalry defense">Cd</a></th>
+        <th><a href="?s=od" title="Occult defense">Od</a></th>
+        <th><a href="?s=bd" title="Beastiary defense">Bd</a></th>
+        <th>
+            <a href="?s=adcost" title="As much offense+defense per resources (Gold, Iron, Food) 10³">AD/Cost</a>
+        </th>
+        <th>
+            <a href="?s=offcost" title="Good for offensive (red) Battlegrounds. Offense per resources (Gold, Iron, Food) 10³">Off/Cost</a>
+        </th>
+        <th>
+            <a href="?s=defcost" title="Good for defensive (green) Battlegrounds. Defense per resources (Gold, Iron, Food) 10³">Def/cost</a>
+        </th>
+        <th>
+            <a href="?s=offfc" title="If you want the most offense without them eating you out of your barns">Off/Fc</a>
+        </th>
+        <th>
+            <a href="?s=deffc" title="If you want the most defense without them eating you out of your barns">Def/Fc</a>
+        </th>
+        <th>
+            <a href="?s=offdef" title="Difference between offense and defense. Closer to zero means more balanced unit">Off/Def</a>
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="unit in units">
+        <!--<td class="name"><%#= unit.name }}</td> -->
+        <td class="img">
+            <img ng-src="/images/{{unit.name | removeSpaces}}.jpg" title="{{unit.name}}" width="76" height="65">
+        </th>
+        <td>{{unit.offense}}</td>
+        <td>{{ unit.infantrydef }}</td>
+        <td>{{ unit.cavalrydef }}</td>
+        <td>{{ unit.occultdef }}</td>
+        <td>{{ unit.beastdef }}</td>
+        <td>{{ ad_per_gifcost(unit) }}</td>
+        <td>{{ off_per_gifcost(unit) }}</td>
+        <td>{{ deff_per_gifcost(unit) }}</td>
+        <td>{{ off_per_eat(unit) }}</td>
+        <td>{{ deff_per_eat(unit) }}</td>
+        <td>{{ off_per_def(unit) }} <!-- link_to '', unit_path(unit), class: 'btn-info' --></td>
+    </tr>
+    </tbody>
+</table>
+
+<!--= link_to 'New Unit', new_unit_path, class: 'btn btn-primary' if admin?  -->

@@ -1,0 +1,293 @@
+<div class="row">
+    <div class="col-sm-4">
+        <b>{{totaldef | number:2}}</b>M unit defense
+        <b>{{totalunits | number:3}}{{kmod}}</b> units
+        <br/>
+        <i>{{finaldef | number:2}}</i>M beacon defense
+    </div>
+    <div class="col-sm-1">
+        <h4>Beacon</h4>
+        </div>
+    <div class="col-sm-2">
+        <select ng-model="currentbeacon" ng-change="changebeacon()" ng-options="beacon.id as beacon.name for beacon in beacons" class="form-control"></select>
+    </div>
+    <div class="col-sm-5">
+        <button class="btn btn-sm btn-success" ng-click="addbeacon()">Add beacon</button>
+        {{updated_at}}
+        {{updated_by}}
+        <!--<a href="#" class="btn btn-default btn-success" data-toggle="modal" data-target="#basicModal">Click to open Modal</a>-->
+        <!--<button class="btn btn-default btn-success" ng-click="saveit()">Save</button>-->
+        <!--<button class="btn btn-default" ng-click="calculate()">Calculate</button>-->
+        {{data.lastusername}}
+    </div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+    <h3>Troops</h3>
+    <table class="units table table-striped">
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Regular</th>
+            <th>Imperial</th>
+            <th>Dark</th>
+            <th>Eldritch</th>
+        </tr>
+
+        <!--Infantry-->
+        <tr>
+            <td>Archers</td>
+            <td><img src="/images/Archer.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.archers"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.imparchers"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darkarchers"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Dwarfs</td>
+            <td><img src="/images/Dwarf.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.dwarfs"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impdwarfs"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darkdwarfs"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Beer</td>
+            <td><img src="/images/BearRider.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.beers"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impbeers"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darkbeers"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Arbalester</td>
+            <td><img src="/images/Arbalester.jpg"></img></td>
+            <td><input type="number" ng-model="beacon.troops.arbas"/></td>
+            <td><input type="number" ng-model="beacon.troops.imparbas"/></td>
+            <td><input type="number" ng-model="beacon.troops.darkarbas"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Warden</td>
+            <td><img src="/images/Warden.jpg"></img></td>
+            <td><input type="number" ng-model="beacon.troops.wardens"/></td>
+            <td><input type="number" ng-model="beacon.troops.impwardens"/></td>
+            <td><input type="number" ng-model="beacon.troops.darkwardens"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Ballista</td>
+            <td><img src="/images/Ballista.jpg"></img></td>
+            <td><input type="number" ng-model="beacon.troops.ballistas"/></td>
+            <td><input type="number" ng-model="beacon.troops.impballistas"/></td>
+            <td><input type="number" ng-model="beacon.troops.darkballistas"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Huntress</td>
+            <td><img src="/images/Huntress.jpg"></img></td>
+            <td><input type="number" ng-model="beacon.troops.huntress"/></td>
+            <td><input type="number" ng-model="beacon.troops.imphuntress"/></td>
+            <td><input type="number" ng-model="beacon.troops.darkhuntress"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Lostone</td>
+            <td><img src="/images/Lostone.jpg"></img></td>
+            <td><input type="number" ng-model="beacon.troops.lostones"/></td>
+            <td><input type="number" ng-model="beacon.troops.implostones"/></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Wraith</td>
+            <td><img src="/images/Wraith.jpg"></img></td>
+            <td><input type="number" ng-model="beacon.troops.wraiths"/></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <!--Cavalry-->
+        <tr>
+            <td>Nomads</td>
+            <td><img src="/images/Nomad.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.nomads"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impnomads"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darknomads"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Barbs</td>
+            <td><img src="/images/Barbarian.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.barbs"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impbarbs"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darkbarbs"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.eldritchbarbs"/></td>
+        </tr>
+        <tr>
+            <td>Reiter</td>
+            <td><img src="/images/Reiter.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.reiters"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impreiters"/></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <!--Occult-->
+        <tr>
+            <td>Golems</td>
+            <td><img src="/images/Golem.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.golems"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impgolems"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darkgolems"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.eldritchgolems"/></td>
+        </tr>
+        <tr>
+            <td>Demons</td>
+            <td><img src="/images/Demon.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.demons"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impdemons"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darkdemons"/></td>
+            <td></td>
+        </tr>
+
+        <!--Beastiary-->
+        <tr>
+            <td>Griffins</td>
+            <td><img src="/images/Griffin.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.griffins"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impgriffins"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darkgriffins"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.eldritchgriffins"/></td>
+        </tr>
+        <tr>
+            <td>Silentone</td>
+            <td><img src="/images/SilentOne.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.silentones"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impsilentones"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darksilentones"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Succubus</td>
+            <td><img src="/images/Succubus.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.succubus"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impsuccubus"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darksuccubus"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Undead dragon</td>
+            <td><img src="/images/UndeadDragon.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.undeaddragon"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impundeaddragon"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.darkundeaddragon"/></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Assassin</td>
+            <td><img src="/images/Assassin.jpg"></img></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.assassin"/></td>
+            <td><input type="number" min="0" ng-model="beacon.troops.impassassin"/></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div class="col-md-6">
+    <h3>Bonuses</h3>
+    <table class="table table-condensed level">
+        <tr>
+            <th>Type</th>
+            <th>Level</th>
+            <th>Relic %</th>
+            <th>defense</th>
+        </tr>
+        <tr>
+            <td>Infantry</td>
+            <td><input type="number" min="0" max="20" ng-model="beacon.levels.infantry"/></td>
+            <td><input type="number" min="0" max="25" step="0.5" ng-model="beacon.levels.relic.infantry"/></td>
+            <td>{{infantrydef | number:2}}M</td>
+        </tr>
+        <tr>
+            <td>Cavalry</td>
+            <td><input type="number" min="0" max="20" ng-model="beacon.levels.cavalry"/></td>
+            <td><input type="number" min="0" max="25" step="0.5" ng-model="beacon.levels.relic.cavalry"/></td>
+            <td>{{cavalrydef | number:2}}M</td>
+        </tr>
+        <tr>
+            <td>Occult</td>
+            <td><input type="number" min="0" max="20" ng-model="beacon.levels.occult"/></td>
+            <td><input type="number" min="0" max="25" step="0.5" ng-model="beacon.levels.relic.occult"/></td>
+            <td>{{occultdef | number:2}}M</td>
+        </tr>
+        <tr>
+            <td>Beastiary</td>
+            <td><input type="number" min="0" max="20" ng-model="beacon.levels.beastiary"/></td>
+            <td><input type="number" min="0" max="25" step="0.5" ng-model="beacon.levels.relic.beastiary"/></td>
+            <td>{{beastiarydef | number:2}}M</td>
+        </tr>
+        <tr>
+            <td>Beacon</td>
+            <td><input type="number" min="0" max="5" ng-model="beacon.levels.beacon"/></td>
+            <td></td>
+            <td>{{beacondef | number:2}}M</td>
+        </tr>
+        <tr>
+            <td>Paragon</td>
+            <td><input type="number" min="0" max="10" ng-model="beacon.levels.paragon"/></td>
+            <td></td>
+            <td>{{paragondef | number:2}}M</td>
+        </tr>
+    </table>
+
+    <h3>Legendaries</h3>
+    <table class="table table-condensed level">
+        <tr>
+            <th>Name </th>
+            <th> Amount</th>
+            <th> &nbsp; &nbsp; </th>
+            <th>defense</th>
+        </tr>
+        <tr>
+             <td>Ice Guardian</td>
+             <td><input type="number" min="0" ng-model="beacon.troops.iceguardians"/></td>
+             <td></td>
+             <td>{{iceguardianD | number:2}}M</td>
+        </tr>
+        <tr>
+            <td>Archangel</td>
+            <td><input type="number" min="0" ng-model="beacon.troops.archangels"/></td>
+            <td></td>
+            <td>{{archangelD | number:2}}M</td>
+        </tr>
+        <tr>
+            <td>Hydra</td>
+            <td><input type="number" min="0" ng-model="beacon.troops.hydras"/></td>
+            <td></td>
+            <td>{{hydraD | number:2}}M</td>
+        </tr>
+        <tr>
+            <td>Elephant</td>
+            <td><input type="number" min="0" ng-model="beacon.troops.elephants"/></td>
+            <td></td>
+            <td>{{elephantD | number:2}}M</td>
+        </tr>
+        <tr>
+            <td>Naithi</td>
+            <td><input type="number" min="0" ng-model="beacon.troops.naithis"/></td>
+            <td></td>
+            <td>{{naithiD | number:2}}M</td>
+        </tr>
+        <tr>
+            <td>Observer</td>
+            <td><input type="number" min="0" ng-model="beacon.troops.observers"/></td>
+            <td></td>
+            <td>{{observerD | number:2}}M</td>
+        </tr>
+
+    </table>
+</div>
+</div> <!-- row -->

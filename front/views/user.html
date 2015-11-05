@@ -1,0 +1,19 @@
+<h3>Admins of Beacon page</h3>
+<table id="users" class="table table-bordered">
+  <tr>
+    <th>Facebook ID</th>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Action</th>
+  </tr>
+  <tr ng-repeat="(id, user) in users">
+     <td>{{id}}</td>
+     <td>{{user.name}}</td>
+      <td><img ng-src="http://graph.facebook.com/{{id}}/picture"></img></td>
+     <td><button class="btn btn-danger" ng-click="remove(id, user)">Remove</button></td>
+  </tr>
+</table>
+
+<input type="text" ng-model="newuser.id" placeholder="Facebook ID"/>
+<input type="text" ng-model="newuser.name" placeholder="Fullname"/>
+<button class="btn btn-success" ng-click="add()">Add</button>

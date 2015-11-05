@@ -1,0 +1,25 @@
+body {
+    padding-top: 60px;
+}
+/*.container {*/
+    /*width: 940px;*/
+/*}*/
+.level input {
+    width: 40px;
+}
+.legend input {
+    width: 40px;
+}
+.units input {
+    width: 70px;
+}
+.units img {
+    width: 28px;
+    height: 28px;
+}
+table#users {
+   width: auto;
+}
+.buttons {
+    margin-top: 8px;
+}

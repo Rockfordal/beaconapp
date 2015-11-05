@@ -1,0 +1,100 @@
+<table id="users" class="table table-bordered table-hover">
+    <tr>
+        <th><a href="" ng-click="predicate = 'Level'; reverse=!reverse">Level</a></th>
+        <th>XP</th>
+        <th><a href="" ng-click="predicate = 'Name'; reverse=!reverse">Name</a></th>
+        <th>X</th>
+        <th>Y</th>
+        <th><a href="" ng-click="predicate = 'Spymax'; reverse=!reverse">Max Spy</a></th>
+        <th><a href="" ng-click="predicate = 'RaidMaxwh'; reverse=!reverse">Max Raid wh</a></th>
+        <th><a href="" ng-click="predicate = 'RaidMaxpoints'; reverse=!reverse">Max Raid</a></th>
+        <th><a href="" ng-click="predicate = 'halfwh'; reverse=!reverse">50% WH?</a></th>
+        <th><a href="" ng-click="predicate = 'Date'; reverse=!reverse">Update</a></th>
+        <th><a href="" ng-click="predicate = 'Raidtime'; reverse=!reverse">Raided</a></th>
+        <th><a href="" ng-click="predicate = 'League'; reverse=!reverse">League</a></th>
+        <th></th>
+    </tr>
+
+    <!-- orderByPriority  -->
+    <tr ng-repeat="castle in filteredCastles | orderBy:predicate:reverse | emptyToEnd:'RaidMaxwh' | emptyToEnd:'RaidMaxpoints' | emptyToEnd:'Raidtime' | filter:searchText | limitTo: itemsPerPage">
+    <!--<tr ng-repeat="castle in filteredCastles | orderBy:predicate:reverse | emptyToEnd:'RaidMaxwh' | emptyToEnd:'RaidMaxpoints' | emptyToEnd:'Raidtime' | limitTo: itemsPerPage">-->
+        <td>{{castle.Level}}</td>
+        <td>{{castle.XP}}</td>
+        <td><a href="" ng-click="sel(castle)">{{castle.Name}}</a></td>
+        <td>{{castle.x}}</td>
+        <td>{{castle.y}}</td>
+        <td>{{castle.Spymax}}</td>
+        <td>{{castle.RaidMaxwh}}</td>
+        <td>{{castle.RaidMaxpoints}}</td>
+        <td>{{castle.halfwh}}</td>
+        <td>{{castle.Date}}</td>
+        <td>{{castle.Raidtime}}</td>
+        <td>{{castle.League}}</td>
+        <td><a href="" ng-click="remove(castle)">X</a>
+        </td>
+    </tr>
+</table>
+
+<div class="input-group">
+    <input ng-model="searchText" placeholder="Search.." class="form-control" autofocus /><br/>
+</div>
+
+<pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" max-size="maxSize"></pagination>
+<!--{{currentPage*itemsPerPage-itemsPerPage}}/-->
+{{itemsPerPage}}/{{totalItems}}
+
+<h3>Add Castle</h3>
+
+
+<form class="form-inline" role="form">
+<table>
+<tr>
+    <th>Level</th>
+    <th>Name</th>
+    <th>X</th>
+    <th>Y</th>
+    <th>Max spy</th>
+    <th>Raided</th>
+    <th>Maxraid</th>
+    <!--<th>Updated</th>-->
+    <th>League</th>
+</tr>
+<tr>
+    <td>
+        <div class="form-group"><input class="form-control" ng-model="new.Level" style="width: 80px"/></div>
+    </td>
+    <td>
+        <div class="form-group"><input class="form-control" ng-model="new.Name"></div>
+    </td>
+    <td>
+        <div class="form-group"><input class="form-control" ng-model="new.x" style="width: 70px"/></div>
+    </td>
+    <td>
+        <div class="form-group"><input class="form-control" ng-model="new.y" ng-keyup="$event.keyCode == 13 ? save() : null"0 style="width: 70px"/></div>
+    </td>
+    <td>
+        <div class="form-group"><input class="form-control" ng-model="new.Spymax" style="width: 100px" ng-keyup="$event.keyCode == 13 ? save() : null"/></div>
+    </td>
+    <td>
+      <div class="form-group"><input class="form-control" ng-model="new.Raidtime" style="width: 100px" ng-keyup="$event.keyCode == 13 ? save() : null"/></div>
+    </td>
+    <td>
+      <div class="form-group"><input type="form-control" class="form-control" ng-model="new.RaidMaxpoints" style="width: 100px"></div>
+    </td>
+    <td>
+        <div class="form-group"><input class="form-control" ng-model="new.League" ng-keyup="$event.keyCode == 13 ? save() : null"/></div>
+    </td>
+    <td>
+        <button class="btn btn-primary btn-sm" ng-click="updatedate()">Update date</button>
+    </td>
+</tr>
+</table>
+<input type="hidden" ng-value="new.Date"/>
+</form>
+
+<div class="buttons">
+<button href="" class="btn btn-success" ng-click="save()">Save</button>
+    <!--<button href="" class="btn btn-primary" type="submit" ng-click="add()">Add new</button>-->
+<button href="" class="btn btn-default" ng-click="clearnew()">Clear</button>
+<!--<button href="" class="btn btn-info" ng-click="info()">Info</button>-->
+</div>
