@@ -1,5 +1,5 @@
 var app = angular.module('innercore').controller('BeaconCtrl',
-  function BeaconCtrl($scope, $firebase, Data) {
+  function BeaconCtrl($scope, $firebase, $firebaseObject, Data) {
 
   var rootUrl = 'https://innercore.firebaseio.com/beacon';
   $scope.data = Data;
@@ -9,13 +9,15 @@ var app = angular.module('innercore').controller('BeaconCtrl',
   $scope.beacons = [
 
     { id: 0, name: 'Test Beacon' },
+    { id: 1, name: 'ic2 #xxxx (x:?0000; y: ?0000)' },
 
     //IC2
-    { id: 1987, name: 'ic2 #1987 (x:-2697; y: 3203)' },
-    { id: 2251, name: 'ic2 #2251 (x: 2097; y: 3403)' },
-    { id: 2388, name: 'ic2 #2388 (x:-1997; y: 3503)' },
+    { id: 1001, name: 'ic2 #1001 (x:-2197; y:-  97)' },
     { id: 1077, name: 'ic2 #1077 (x:-1397; y:-2297)' },
     { id: 1172, name: 'ic2 #1172 (x:-1497; y:-2397)' },
+    { id: 2251, name: 'ic2 #2251 (x: 2097; y: 3403)' },
+    { id: 2388, name: 'ic2 #2388 (x:-1997; y: 3503)' },
+    { id: 1987, name: 'ic2 #1987 (x:-2697; y: 3203)' },
 
     //IC3
     { id: 2925, name: 'ic3 #2925 (x:-3497; y:-3797)' },
@@ -78,7 +80,8 @@ var app = angular.module('innercore').controller('BeaconCtrl',
 
     var URL = rootUrl + '/' + $scope.currentbeacon;
     var ref = new Firebase(URL);
-    obj = $firebase(ref).$asObject();
+    //obj = $firebase(ref).$asObject();
+    obj = $firebaseObject(ref);
 
     // 3-way data binding
     obj.$bindTo($scope, 'beacon').then(function(unbind) {

@@ -1,16 +1,15 @@
 var app = angular.module('innercore').
-  controller('castleCtrl', function($scope, $firebase, $filter, Data, toaster) {
+  controller('castleCtrl', function($scope, $firebaseArray, $filter, Data, toaster) {
     var URL = 'https://innercore.firebaseio.com';
     var ref = new Firebase(URL);
     var castleref = ref.child('castle')
-    var castlesync = $firebase(castleref);
-    $scope.castles = castlesync.$asArray();
+    $scope.castles = $firebaseArray(castleref);
     $scope.data = Data;
     $scope.itemsPerPage = 10;
     $scope.currentPage = 1;
     $scope.maxSize = 5;
     //$scope.filteredCastles = $scope.castles;
-    // toaster.pop('error', 'title', 'test');
+    //toaster.pop('error', 'title', 'test');
 
     $scope.setdate = function () {
       var datetoday = moment().format('YYYY-MM-DD');

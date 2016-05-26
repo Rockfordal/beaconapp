@@ -1,9 +1,8 @@
-var app = angular.module('innercore').controller('userCtrl', function UserCtrl($scope, $firebase) {
+var app = angular.module('innercore').controller('userCtrl', function UserCtrl($scope, $firebaseObject) {
   var URL = 'https://innercore.firebaseio.com';
   var ref = new Firebase(URL);
   var userref = ref.child('users');
-  var usersync = $firebase(userref)
-  $scope.users = usersync.$asObject();
+  $scope.users = $firebaseObject(userref);
   $scope.newuser = { name: '', id: '' };
 
   $scope.add = function () {
